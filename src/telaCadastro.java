@@ -1,6 +1,7 @@
 
 import com.sun.jdi.connect.spi.Connection;
 import intefasegraficar.modelo.Contato;
+import interfacegrafica.dao.ContatoDao;
 import javax.swing.JOptionPane;
 
 /*
@@ -228,6 +229,8 @@ else{
     contato.setEmail(email);
     contato.setLogin(login);
     contato.setSenha(senha);
+    ContatoDao contatoDao = new Contato();
+    contatoDao.adicionaContato (contato);
     JOptionPane.showMessageDialog(null, "Gravado com sucesso!");
 
 }
