@@ -2,6 +2,9 @@
 import com.sun.jdi.connect.spi.Connection;
 import intefasegraficar.modelo.Contato;
 import interfacegrafica.dao.ContatoDao;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /*
@@ -87,10 +90,6 @@ public class telaCadastro extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-
-        txtSenha.setText("jPasswordField1");
-
-        txtConfirme.setText("jPasswordField2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,6 +217,14 @@ if (!confirme.equals(senha)){
     valida = true;
     msg += "\nSenha esta diferente de Confirme";
 }
+Date dataNascimento;
+try{
+    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+    dataNascimento = new Date(format.parse(data).getTime());
+}
+catch (ParseException e) {
+    throw new RuntimeException(e);
+}
 if ( valida == true) {
     JOptionPane.showMessageDialog(null,"Existe campos para preencher:" + msg);
   
@@ -229,7 +236,7 @@ else{
     contato.setEmail(email);
     contato.setLogin(login);
     contato.setSenha(senha);
-    ContatoDao contatoDao = new Contato();
+    ContatoDao contatoDao = new ContatoDao();
     contatoDao.adicionaContato (contato);
     JOptionPane.showMessageDialog(null, "Gravado com sucesso!");
 

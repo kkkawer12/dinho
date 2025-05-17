@@ -4,6 +4,7 @@
  */
 package interfacegrafica.dao;
 
+import intefasegraficar.modelo.Contato;
 import java.sql.Connection;
 /**
  *
@@ -16,7 +17,7 @@ public class ContatoDao {
         this.conexao = new ConexaoBD().getConnection();
     }
     public void adicionaContato(Contato contato) {
-        String sql = "INSERT INTO Contato" + "(nome,telefone,email,dataNascimento,login,senha)" + "VALUES (\,\,\,\,\,\,)";
+        String sql = "INSERT INTO Contato" + "(nome,telefone,email,dataNascimento,login,senha)" + "VALUES (n, n, n, n, n, n)";
         
         
      try{
